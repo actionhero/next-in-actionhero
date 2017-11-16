@@ -45,7 +45,7 @@ module.exports = class NextInitializer extends Initializer {
       }
     }
 
-    api.next.dev = (api.env !== 'production')
+    api.next.dev = (api.env === 'development')
     if (api.next.dev) { api.log('Running next in development mode...') }
 
     api.next.app = next({dev: api.next.dev})
@@ -95,14 +95,15 @@ exports['default'] = {
     return {
       get: [
         { path: '/status', action: 'status' },
-        { path: '/randomNumber', action: 'randomNumber' },
+        { path: '/time', action: 'time' },
+        { path: '/showDocumentation', action: 'showDocumentation' },
+        { path: '/createChatRoom', action: 'createChatRoom' },
 
         { path: '/', matchTrailingPathParts: true, action: 'render' }
       ]
     }
   }
 }
-
 ```
 
 ## TODO
