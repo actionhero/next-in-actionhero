@@ -1,5 +1,7 @@
 # Running Next.JS and React /inside/ of ActionHero
 
+[![CircleCI](https://circleci.com/gh/actionhero/next-in-actionhero.svg?style=svg)](https://circleci.com/gh/actionhero/next-in-actionhero)
+
 An ActionHero example like https://github.com/zeit/next.js/tree/master/examples/custom-server-express
 
 This server will render dynamic next.js/react pages on some routes, and normal ActionHero API requests on others!.  We also show how to use the ActionHero Client to chat via websockets in a react app.
