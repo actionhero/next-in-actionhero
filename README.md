@@ -1,5 +1,7 @@
 # Running Next.JS and React /inside/ of ActionHero
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/actionhero/next-in-actionhero.svg)](https://greenkeeper.io/)
+
 [![CircleCI](https://circleci.com/gh/actionhero/next-in-actionhero.svg?style=svg)](https://circleci.com/gh/actionhero/next-in-actionhero)
 
 An ActionHero example like https://github.com/zeit/next.js/tree/master/examples/custom-server-express
