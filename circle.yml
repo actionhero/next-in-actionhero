@@ -1,0 +1,20 @@
+machine:
+  services:
+    - redis
+  node:
+    version: 8
+
+test:
+  override:
+    - 'npm test'
+
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - bin/deploy
