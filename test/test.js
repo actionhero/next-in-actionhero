@@ -2,6 +2,8 @@
 
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')
+const cheerio = require('cheerio')
+const request = require('request-promise-native')
 const expect = chai.expect
 chai.use(dirtyChai)
 
@@ -33,5 +35,14 @@ describe('ActionHero + Next Tests', () => {
     expect(time).to.be.above(0)
   })
 
-  it('can render a react page')
+  describe('html rendering', () => {
+    let url = ''
+    before(() => { url = `http://localhost:${api.config.servers.web.port}` })
+
+    it('can render a react page', async() => {
+      const page = await request.get(url)
+      const $ = cheerio.load(page)
+      expect($('h1').text()).to.equal('ActionHero')
+    })
+  })
 })
