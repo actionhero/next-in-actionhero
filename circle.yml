@@ -1,9 +1,0 @@
-machine:
-  services:
-    - redis
-  node:
-    version: 8
-
-test:
-  override:
-    - 'npm test'
