@@ -138,10 +138,10 @@ export default class extends React.Component {
               <p>
                 {
                   this.state.id
-                  ? <Label bsStyle='primary'>
+                    ? <Label bsStyle='primary'>
                     You are <span style={{color: this.getColor(this.state.id)}}>{this.state.id}</span>
-                  </Label>
-                  : null
+                    </Label>
+                    : null
                 }
               </p>
 
@@ -165,10 +165,10 @@ export default class extends React.Component {
 
             {
               this.state.serverTime > 0
-              ? <Well>
-                <p>The time on the server when you connected was: {(new Date(this.state.serverTime)).toString()}</p>
-              </Well>
-              : null
+                ? <Well>
+                  <p>The time on the server when you connected was: {(new Date(this.state.serverTime)).toString()}</p>
+                </Well>
+                : null
             }
           </Col>
 

@@ -39,7 +39,7 @@ describe('ActionHero + Next Tests', () => {
     let url = ''
     before(() => { url = `http://localhost:${api.config.servers.web.port}` })
 
-    it('can render a react page', async() => {
+    it('can render a react page', async () => {
       const page = await request.get(url)
       const $ = cheerio.load(page)
       expect($('h1').text()).to.equal('ActionHero')

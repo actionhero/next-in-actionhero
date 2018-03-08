@@ -3370,7 +3370,7 @@ if (typeof Primus === 'undefined') {
 }
 
 ActionheroWebsocketClient.prototype.defaults = function () {
-  return { apiPath: '/api', url: null }
+  return { apiPath: '/api', url: window.location.origin }
 }
 
 // //////////////
