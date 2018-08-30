@@ -21,17 +21,17 @@ export default class extends React.Component {
     // (this comes from the server, loaded via index.html)
     // we need to load this after the component is mounted to the server doesn't try to render this isomorphically
     let client = new ActionheroWebsocketClient({url: this.state.url}) // eslint-disable-line
-    this.setState({client}, () => this.connect())
+    this.setState({ client }, () => this.connect())
   }
 
   connect () {
     const client = this.state.client
 
-    client.on('connected', () => { this.setState({state: 'connected', id: client.id}) })
-    client.on('disconnected', () => { this.setState({state: 'disconnected'}) })
-    client.on('error', (error) => { this.setState({error}) })
-    client.on('reconnect', () => { this.setState({state: 'reconnect'}) })
-    client.on('reconnecting', () => { this.setState({state: 'reconnecting'}) })
+    client.on('connected', () => { this.setState({ state: 'connected', id: client.id }) })
+    client.on('disconnected', () => { this.setState({ state: 'disconnected' }) })
+    client.on('error', (error) => { this.setState({ error }) })
+    client.on('reconnect', () => { this.setState({ state: 'reconnect' }) })
+    client.on('reconnecting', () => { this.setState({ state: 'reconnecting' }) })
 
     client.on('alert', function (message) { console.warn(message) })
     client.on('api', function (message) { console.warn(message) })
@@ -40,8 +40,8 @@ export default class extends React.Component {
     client.on('say', (message) => { this.appendMessage(message) })
 
     client.connect((error, details) => {
-      if (error) { return this.setState({error}) }
-      client.action('createChatRoom', {name: this.state.room}, () => {
+      if (error) { return this.setState({ error }) }
+      client.action('createChatRoom', { name: this.state.room }, () => {
         client.roomAdd(this.state.room)
         this.loadServerTime()
       })
@@ -52,14 +52,14 @@ export default class extends React.Component {
     const client = this.state.client
 
     client.action('time', (response) => {
-      this.setState({serverTime: response.time})
+      this.setState({ serverTime: response.time })
     })
   }
 
   appendMessage (message) {
     let messages = this.state.messages
     messages.unshift(message)
-    this.setState({messages})
+    this.setState({ messages })
   }
 
   formatMessage (message) {
@@ -71,7 +71,7 @@ export default class extends React.Component {
       return (
         <ListGroupItem key={key} header={
           <div>
-            <span style={{color: this.getColor(message.from)}}>{message.from}</span> @ {this.formatTime(message.sentAt)}
+            <span style={{ color: this.getColor(message.from) }}>{message.from}</span> @ {this.formatTime(message.sentAt)}
           </div>
         }>{message.message}</ListGroupItem>
       )
@@ -109,7 +109,7 @@ export default class extends React.Component {
     event.preventDefault()
     const client = this.state.client
     client.say(this.state.room, this.state.message)
-    this.setState({message: ''})
+    this.setState({ message: '' })
   }
 
   render () {
@@ -119,7 +119,7 @@ export default class extends React.Component {
         <Jumbotron>
           <Row>
             <Col md={4}>
-              <img src='/static/images/logo/actionhero.png' style={{maxWidth: 200}} />
+              <img src='/static/images/logo/actionhero.png' style={{ maxWidth: 200 }} />
             </Col>
             <Col md={8}>
               <h1>ActionHero</h1>
@@ -139,7 +139,7 @@ export default class extends React.Component {
                 {
                   this.state.id
                     ? <Label bsStyle='primary'>
-                    You are <span style={{color: this.getColor(this.state.id)}}>{this.state.id}</span>
+                    You are <span style={{ color: this.getColor(this.state.id) }}>{this.state.id}</span>
                     </Label>
                     : null
                 }
