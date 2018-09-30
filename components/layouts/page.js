@@ -23,7 +23,7 @@ export default class extends React.Component {
 
           <title>ActionHero React Next Chat</title>
 
-          <script src='//demo.actionherojs.com/public/javascript/ActionheroWebsocketClient.min.js' />
+          <script src='/static/javascript/ActionheroWebsocketClient.min.js' />
         </Head>
 
         <Grid style={this.globalStyle()}>

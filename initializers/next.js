@@ -1,5 +1,5 @@
 'use strict'
-const {Initializer, api} = require('actionhero')
+const { Initializer, api } = require('actionhero')
 const next = require('next')
 
 module.exports = class NextInitializer extends Initializer {
@@ -21,7 +21,7 @@ module.exports = class NextInitializer extends Initializer {
     api.next.dev = (api.env === 'development')
     if (api.next.dev) { api.log('Running next in development mode...') }
 
-    api.next.app = next({dev: api.next.dev})
+    api.next.app = next({ dev: api.next.dev })
     api.next.handle = api.next.app.getRequestHandler()
     await api.next.app.prepare()
   }

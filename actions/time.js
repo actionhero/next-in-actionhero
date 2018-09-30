@@ -1,5 +1,5 @@
 'use strict'
-const {Action} = require('actionhero')
+const { Action } = require('actionhero')
 
 module.exports = class Time extends Action {
   constructor () {
@@ -8,7 +8,7 @@ module.exports = class Time extends Action {
     this.description = 'I return the time from the server'
   }
 
-  async run ({response}) {
+  async run ({ response }) {
     response.time = (new Date()).getTime()
   }
 }

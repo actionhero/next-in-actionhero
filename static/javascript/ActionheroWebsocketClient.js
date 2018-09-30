@@ -10,7 +10,7 @@
   }
 })("Primus", this || {}, function wrapper() {
   var define, module, exports
-    , Primus = (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+    , Primus = (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(_dereq_,module,exports){
 'use strict';
 
 /**
@@ -682,15 +682,18 @@ function querystring(query) {
     , result = {}
     , part;
 
-  //
-  // Little nifty parsing hack, leverage the fact that RegExp.exec increments
-  // the lastIndex property so we can continue executing this loop until we've
-  // parsed all results.
-  //
-  for (;
-    part = parser.exec(query);
-    result[decode(part[1])] = decode(part[2])
-  );
+  while (part = parser.exec(query)) {
+    var key = decode(part[1])
+      , value = decode(part[2]);
+
+    //
+    // Prevent overriding of existing properties. This ensures that build-in
+    // methods like `toString` or __proto__ are not overriden by malicious
+    // querystrings.
+    //
+    if (key in result) continue;
+    result[key] = value;
+  }
 
   return result;
 }
@@ -3282,7 +3285,7 @@ Primus.prototype.decoder = function decoder(data, fn) {
 
   fn(err, data);
 };
-Primus.prototype.version = "7.1.1";
+Primus.prototype.version = "7.2.2";
 
 if (
      'undefined' !== typeof document
@@ -3331,7 +3334,8 @@ if (
 //
 module.exports = Primus;
 
-},{"demolish":1,"emits":2,"eventemitter3":3,"inherits":4,"querystringify":7,"recovery":8,"tick-tock":11,"url-parse":12,"yeast":13}]},{},[14])(14);
+},{"demolish":1,"emits":2,"eventemitter3":3,"inherits":4,"querystringify":7,"recovery":8,"tick-tock":11,"url-parse":12,"yeast":13}]},{},[14])(14)
+;
   return Primus;
 },
 [
@@ -3370,7 +3374,9 @@ if (typeof Primus === 'undefined') {
 }
 
 ActionheroWebsocketClient.prototype.defaults = function () {
-  return { apiPath: '/api', url: window.location.origin }
+  return { apiPath: '/api',
+  cookieKey: 'sessionID',
+  url: window.location.origin }
 }
 
 // //////////////
@@ -3385,12 +3391,12 @@ ActionheroWebsocketClient.prototype.connect = function (callback) {
     self.client.end()
     self.client.removeAllListeners()
     delete self.client
-    self.client = Primus.connect(self.options.url, self.options)
+    self.client = Primus.connect(self.urlWithSession(), self.options)
   } else if (self.client && self.externalClient === true) {
     self.client.end()
     self.client.open()
   } else {
-    self.client = Primus.connect(self.options.url, self.options)
+    self.client = Primus.connect(self.urlWithSession(), self.options)
   }
 
   self.client.on('open', function () {
@@ -3444,6 +3450,23 @@ ActionheroWebsocketClient.prototype.connect = function (callback) {
   self.client.on('data', function (data) {
     self.handleMessage(data)
   })
+}
+
+ActionheroWebsocketClient.prototype.urlWithSession = function () {
+  var self = this
+  var url = self.options.url
+  if (self.options.cookieKey && self.options.cookieKey.length > 0) {
+    var cookieValue = self.getCookie(self.options.cookieKey)
+    if (cookieValue && cookieValue.length > 0 ) { url += '?' + self.options.cookieKey + '=' + cookieValue }
+  }
+
+  return url
+}
+
+ActionheroWebsocketClient.prototype.getCookie = function (name) {
+  if (typeof document === 'undefined' || !document.cookie) { return }
+  var match = document.cookie.match(new RegExp(name + '=([^;]+)'))
+  if (match) return match[1]
 }
 
 ActionheroWebsocketClient.prototype.configure = function (callback) {
