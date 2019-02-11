@@ -10,7 +10,7 @@
     "actionhero": "19.1.0",
     "fakeredis": "latest",
     "ioredis": "^4.0.0",
-    "next": "^7.0.1",
+    "next": "^8.0.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.7.0",
