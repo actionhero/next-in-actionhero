@@ -22,7 +22,7 @@
     "cheerio": "^1.0.0-rc.2",
     "cross-env": "^5.2.0",
     "dirty-chai": "latest",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
     "standard": "^12.0.1"
