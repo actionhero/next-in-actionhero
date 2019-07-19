@@ -26,12 +26,12 @@ describe('ActionHero + Next Tests', () => {
   })
 
   it('can retrieve server uptime via the status action', async () => {
-    let { uptime } = await api.specHelper.runAction('status')
+    const { uptime } = await api.specHelper.runAction('status')
     expect(uptime).to.be.above(0)
   })
 
   it('can retrieve servers time from the time action', async () => {
-    let { time } = await api.specHelper.runAction('time')
+    const { time } = await api.specHelper.runAction('time')
     expect(time).to.be.above(0)
   })
 

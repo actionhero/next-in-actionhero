@@ -48,13 +48,13 @@ export default class extends React.Component {
   }
 
   appendMessage (message) {
-    let messages = this.state.messages
+    const messages = this.state.messages
     messages.unshift(message)
     this.setState({ messages })
   }
 
   formatMessage (message) {
-    let key = new Date().getTime() + Math.random()
+    const key = new Date().getTime() + Math.random()
 
     if (message.welcome) {
       return <ListGroupItem key={key}><strong>{`*** ${message.welcome} ***`}</strong></ListGroupItem>
@@ -81,7 +81,7 @@ export default class extends React.Component {
       hash = id.charCodeAt(i) + ((hash << 5) - hash)
     }
 
-    let color =
+    const color =
       ((hash >> 24) & 0xFF).toString(16) +
       ((hash >> 16) & 0xFF).toString(16) +
       ((hash >> 8) & 0xFF).toString(16) +
@@ -91,7 +91,7 @@ export default class extends React.Component {
   }
 
   handleChange (event) {
-    let change = {}
+    const change = {}
     change[event.target.id] = event.target.value
     this.setState(change)
   }

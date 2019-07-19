@@ -1,6 +1,6 @@
 let host = process.env.REDIS_HOST || '127.0.0.1'
 let port = process.env.REDIS_PORT || 6379
-let db = process.env.REDIS_DB || 0
+const db = process.env.REDIS_DB || 0
 let password = process.env.REDIS_PASSWORD || null
 const maxBackoff = 1000
 
@@ -28,7 +28,7 @@ exports['default'] = {
     return {
       enabled: true,
 
-      '_toExpand': false,
+      _toExpand: false,
       client: {
         konstructor: require('ioredis'),
         args: [{ port: port, host: host, password: password, db: db, retryStrategy: retryStrategy }],
