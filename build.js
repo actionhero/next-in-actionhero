@@ -3,7 +3,7 @@ const packageJSON = require(`${__dirname}/package.json`)
 
 nexe.compile({
   output: `${packageJSON.name}-${packageJSON.version}`,
-  input: `./node_modules/actionhero/bin/actionhero`,
+  input: './node_modules/actionhero/bin/actionhero',
   name: packageJSON.name,
   cwd: __dirname,
   build: true,
