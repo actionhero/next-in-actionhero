@@ -9,23 +9,23 @@
   "dependencies": {
     "actionhero": "19.2.2",
     "fakeredis": "latest",
-    "ioredis": "^4.11.2",
-    "next": "^9.0.2",
-    "react": "^16.8.6",
+    "ioredis": "^4.14.0",
+    "next": "^9.0.5",
+    "react": "^16.9.0",
     "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.9.0",
     "react-fontawesome": "^1.6.1",
-    "ws": "^7.1.1"
+    "ws": "^7.1.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "cheerio": "^1.0.0-rc.2",
-    "cross-env": "^5.2.0",
+    "cheerio": "^1.0.0-rc.3",
+    "cross-env": "^5.2.1",
     "dirty-chai": "latest",
     "mocha": "^6.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "standard": "^14.0.0"
+    "standard": "^14.1.0"
   },
   "scripts": {
     "start": "actionhero start",
