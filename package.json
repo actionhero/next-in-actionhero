@@ -9,7 +9,7 @@
   "dependencies": {
     "actionhero": "19.2.2",
     "fakeredis": "latest",
-    "ioredis": "^4.14.0",
+    "ioredis": "^4.14.1",
     "next": "^9.0.5",
     "react": "^16.9.0",
     "react-bootstrap": "^0.32.4",
@@ -26,7 +26,7 @@
     "mocha": "^6.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "standard": "^14.2.0"
+    "standard": "^14.3.0"
   },
   "scripts": {
     "start": "actionhero start",

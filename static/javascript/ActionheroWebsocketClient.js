@@ -3722,11 +3722,9 @@ if (typeof Primus === 'undefined') {
 }
 
 ActionheroWebsocketClient.prototype.defaults = function () {
-  return {
-  apiPath: '/api',
+  return { apiPath: '/api',
   cookieKey: 'sessionID',
-  url: window.location.origin
-}
+  url: window.location.origin }
 }
 
 // //////////////
