@@ -11,7 +11,7 @@
     "fakeredis": "latest",
     "ioredis": "^4.14.1",
     "next": "^9.0.5",
-    "react": "^16.9.0",
+    "react": "^16.10.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.9.0",
     "react-fontawesome": "^1.6.1",
