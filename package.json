@@ -21,7 +21,7 @@
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
-    "cross-env": "^5.2.1",
+    "cross-env": "^6.0.3",
     "dirty-chai": "latest",
     "mocha": "^6.2.0",
     "request": "^2.88.0",
